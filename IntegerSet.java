@@ -5,8 +5,12 @@ import java.util.ArrayList;
 
 public class IntegerSet {
     ArrayList<Integer>Numbers; //Rep
-    //AF เซตของตัวเลขทั้งหมดอยู่ในNumber
+    //AF เซตของตัวเลขทั้งหมดอยู่ใน Numbers
     //RI ที่เก็บเลขจำนวนเต็มใดๆ เรียงจากน้อยไปมาก และห้ามมี null หรือตัวเลขซ้ำ
+
+    /**
+     * Constructor เริ่มต้นสร้าง Arraylist เก็บตัวเลข
+     */
     public IntegerSet(){
         Numbers = new ArrayList<>();
         CheckRep();
@@ -52,7 +56,9 @@ public class IntegerSet {
         }
         CheckRep();
     }
-
+    /**
+     * @param x ตัวเลขที่ต้องการลบ
+     */
     public void remove(Integer x){
         if (x == null) 
             return;
@@ -68,9 +74,16 @@ public class IntegerSet {
         return Numbers.contains(x);
     }
     
+    /**
+     * คืนค่าขนาดของเซต
+     * @return จำนวนสมาชิกในเซต
+     */
+    public int size() {
+        return Numbers.size();
+    }
 
     /**
-     * @return
+     * @return ส่งค่าจากตัวเลขเป็นchar  เพื่อเช็คข้อความ
      */
     public String toString(){
         return Numbers.toString();

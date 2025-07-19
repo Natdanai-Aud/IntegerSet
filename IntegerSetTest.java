@@ -3,43 +3,55 @@ public class IntegerSetTest {
         System.out.println("--- Starting CharSet Manual Tests ---");
         int passed = 0;
         int failed = 0;
-        IntegerSet a = new IntegerSet();
-        a.add(50);
-        a.add(70);
-        a.add(40);
-        a.add(60);
+        
         
         // Test 1: การสร้าง, เพิ่มข้อมูล, และการเรียงลำดับ
         System.out.println("\n--- Testing add() and sorting ---");
-        String s = "[40, 50, 60, 70]";
+        IntegerSet a = new IntegerSet();
+        a.add(50);
+        a.add(40);
+        a.add(60);
+        String s = "[40, 50, 60]";
         if (a.toString().equals(s)){
-            System.out.println("Pass");
+            System.out.println("Passed: Add and sort works correctly.");
             passed++;
         } else{
-            System.out.println("Fail"+a.toString());
+            System.out.println("Failed"+a.toString());
             failed++;
         }
 
-        // Test 2: การลบตัวเลข
-        a.remove(60);
-        System.out.println("\n--- Testing remove() ---");  
-        String s2 = "[40, 50, 70]";
+        // Test 2: การเพิ่มข้อมูลที่ซ้ำซ้อน
+        System.out.println("\n--- Testing adding duplicates ---");
+        a.add(40);
+        if (a.size()==3) {
+            System.out.println("Passed: Adding a duplicate does not change the size.");
+            passed++;
+        } else {
+            System.out.println("Failed: Size should be 3 but got " + a.size());
+            failed++;
+        }
+
+
+        // Test 3: การลบตัวเลข
+        System.out.println("\n--- Testing remove() ---"); 
+        a.remove(60); 
+        String s2 = "[40, 50]";
         if (a.toString().equals(s2)){
-            System.out.println("Pass");
+            System.out.println("Passed: Remove works correctly.");
             passed++;
         } else{
-            System.out.println("Fail"+a.toString());
+            System.out.println("Failed"+a.toString());
             failed++;
         }
         
-        // Test 3: การตรวจสอบตัวเลข
+        // Test 4: การตรวจสอบตัวเลข
         System.out.println("\n--- Testing contains() ---");
         
-        if (a.contains(40)&&!a.contains(40)){
-            System.out.println("Pass");
+        if (a.contains(40)&&!a.contains(60)){
+            System.out.println("Passed: Contains works correctly after removal.");
             passed++;
         } else{
-            System.out.println("Fail"+a.toString());
+            System.out.println("Failed"+a.toString());
             failed++;
         }
 
